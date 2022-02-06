@@ -1,0 +1,27 @@
+version: "3.8"
+
+x-common-data: &common-data
+  platform: linux/amd64
+  restart: on-failure
+
+services:
+  zookeeper:
+    <<: *common-data
+    container_name: zookeeper
+    build:
+      context: .
+      target: zookeeper
+    ports:
+      - 2181:2181
+    
+  broker:
+    <<: *common-data
+    container_name: broker
+    build:
+      context: .
+      target: broker
+    ports:
+      - 9092:9092
+    depends_on:
+      - zookeeper
+

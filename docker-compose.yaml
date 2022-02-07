@@ -1,7 +1,7 @@
 version: "3.8"
 
 x-common-data: &common-data
-  platform: linux/amd64
+  # platform: linux/amd64
   restart: on-failure
 
 services:

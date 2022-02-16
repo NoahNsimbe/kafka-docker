@@ -5,6 +5,9 @@ RUN wget https://dlcdn.apache.org/kafka/3.1.0/kafka_2.13-3.1.0.tgz
 RUN tar -xzf kafka_2.13-3.1.0.tgz && mkdir kafka && cp -r kafka_2.13-3.1.0/* kafka/
 RUN rm kafka_2.13-3.1.0.tgz && rm -r kafka_2.13-3.1.0/
 
+# Connector plugins
+RUN echo 'plugin.path=/opt/kafka/plugins' >> kafka/config/connect-standalone.properties
+
 FROM base as zookeeper
 EXPOSE 2181
 CMD ["kafka/bin/zookeeper-server-start.sh", "kafka/config/zookeeper.properties"]

@@ -31,4 +31,4 @@ jobs:
           context: .
           target: docker-image
           push: true
-          tags: noahnsimbe/app:kafka-docker
+          tags: noahnsimbe/kafka-docker:latest
